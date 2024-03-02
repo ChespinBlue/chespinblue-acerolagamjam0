@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var move_speed : float = 100
+var base_move_speed : float = 100
+var computerSpeedBlock = false
 
 @export var starting_direction : Vector2 = Vector2(0, 2)
 
@@ -36,7 +38,11 @@ func _input(event):
 		
 	if event.is_action_pressed("interact"):
 		if incomputerrange == true:
-			pass
+			computerSpeedBlock = true
+	if event.is_action_pressed("cancel"):
+		if incomputerrange == true:
+			computerSpeedBlock = false
+	
 			
 	if event.is_action_pressed("exit"):
 		get_tree().quit()
@@ -48,10 +54,13 @@ func _physics_process(_delta):
 	
 	################# movement
 	##stop double speed
-	if keysbeingpressed == 2:
-		move_speed = 71
-	else:
-		move_speed = 100
+	if computerSpeedBlock == false:
+		if keysbeingpressed == 2:
+			move_speed = base_move_speed*0.71
+		elif keysbeingpressed == 1:
+			move_speed = base_move_speed
+	elif computerSpeedBlock == true:
+		move_speed = 0
 	##movement
 	#make it so that you can't go in both direcrtions at once
 	var input_direction = Vector2(
@@ -70,3 +79,7 @@ func _on_computer_area_body_exited(body):
 	incomputerrange = false
 func _on_computer_area_body_entered(body):
 	incomputerrange = true
+
+
+func _on_computertelepathybugfix_timeout():
+	incomputerrange = false

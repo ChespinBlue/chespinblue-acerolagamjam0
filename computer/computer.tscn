@@ -1,16 +1,67 @@
-[gd_scene format=3 uid="uid://cs7v5mof3upen"]
+[gd_scene load_steps=4 format=3 uid="uid://cs7v5mof3upen"]
+
+[ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_c4noa"]
+[ext_resource type="Script" path="res://computer/computer.gd" id="1_hhnob"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073us"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="computer" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("1_hhnob")
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(140, 105)
+texture = ExtResource("1_c4noa")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 252.0
+offset_bottom = 182.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_073us")
+
+[node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_left = 234.0
-offset_top = 87.0
-offset_right = 255.0
-offset_bottom = 108.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 69.0
+offset_bottom = 149.0
+
+[node name="Label" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 28.0
+text = "emails"
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 83.0
+offset_right = 218.0
+offset_bottom = 149.0
+
+[node name="Label" type="Label" parent="Panel/Panel2"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 28.0
+text = "orders"
+
+[node name="screen transiton" type="Timer" parent="."]
+wait_time = 0.005
+autostart = true
+
+[node name="screen_wait" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
+[connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]
