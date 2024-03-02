@@ -156,7 +156,6 @@ scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_6ad5g")
 
 [node name="computer" parent="." instance=ExtResource("7_st8rr")]
-visible = false
 script = ExtResource("8_jvggw")
 
 [connection signal="body_entered" from="TileMap/computerArea" to="player" method="_on_computer_area_body_entered"]
