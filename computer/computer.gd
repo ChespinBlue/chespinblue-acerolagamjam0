@@ -3,6 +3,8 @@ extends Control
 @onready var screenWait = $screen_wait
 @onready var email1 = $Panel/emails/email1
 
+@onready var email2 = $Panel/emails/email2
+@onready var email2p = $Panel/emails/email2p
 
 var incomputerrange = false
 var usingComputer = false
@@ -30,10 +32,9 @@ func _input(event):
 				visible = true
 				position.y = 210
 	if event.is_action_pressed("cancel"):
-		if incomputerrange == true:
-			usingComputer = false
-			
-			screenWait.start()
+		usingComputer = false
+		
+		screenWait.start()
 			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -71,3 +72,12 @@ func _on_email_1p_pressed():
 		email1.visible = true
 	else:
 		email1.visible = false
+
+
+func _on_email_2p_pressed():
+	if email2.visible == false:
+		email2.visible = true
+	else:
+		email2.visible = false
+func _on_email_2_timer_timeout():
+	email2p.visible = true

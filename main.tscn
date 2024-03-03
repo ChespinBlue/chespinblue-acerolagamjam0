@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://3vj6bgwewf2k"]
+[gd_scene load_steps=37 format=3 uid="uid://3vj6bgwewf2k"]
 
+[ext_resource type="Script" path="res://chutenotearea.gd" id="1_rd8sq"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_rx3ev"]
 [ext_resource type="Texture2D" uid="uid://qb3ea2q85v2j" path="res://player/player.png" id="2_dqo48"]
 [ext_resource type="Texture2D" uid="uid://bmf16vw87yufu" path="res://computer/printer.png" id="3_1qd8s"]
@@ -20,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c2o3oistoahqv" path="res://enviroments/office/notefull.png" id="18_ivhnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgr7p"]
-size = Vector2(26, 25)
+size = Vector2(25, 19)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll8hi"]
 bg_color = Color(0, 0, 0, 0.462745)
@@ -329,9 +330,10 @@ y_sort_enabled = true
 
 [node name="chutenotearea" type="Area2D" parent="."]
 position = Vector2(140, 105)
+script = ExtResource("1_rd8sq")
 
 [node name="chutenoteareacollision" type="CollisionShape2D" parent="chutenotearea"]
-position = Vector2(84, -32.5)
+position = Vector2(84.5, -35.5)
 shape = SubResource("RectangleShape2D_vgr7p")
 
 [node name="chutenote" type="Sprite2D" parent="chutenotearea"]
@@ -469,10 +471,13 @@ offset_bottom = 78.0
 text = "pause"
 metadata/_edit_lock_ = true
 
+[connection signal="body_entered" from="chutenotearea" to="chutenotearea" method="_on_body_entered"]
+[connection signal="body_exited" from="chutenotearea" to="chutenotearea" method="_on_body_exited"]
 [connection signal="body_entered" from="TileMap/computerArea" to="player" method="_on_computer_area_body_entered"]
 [connection signal="body_entered" from="TileMap/computerArea" to="computer" method="_on_computer_area_body_entered"]
 [connection signal="body_exited" from="TileMap/computerArea" to="player" method="_on_computer_area_body_exited"]
 [connection signal="body_exited" from="TileMap/computerArea" to="computer" method="_on_computer_area_body_exited"]
+[connection signal="timeout" from="computer/computertelepathybugfix" to="chutenotearea" method="_on_computertelepathybugfix_timeout"]
 [connection signal="timeout" from="computer/computertelepathybugfix" to="player" method="_on_computertelepathybugfix_timeout"]
 [connection signal="timeout" from="computer/computertelepathybugfix" to="computer" method="_on_computertelepathybugfix_timeout"]
 [connection signal="pressed" from="pause screen/exit" to="pause screen" method="_on_exit_pressed"]

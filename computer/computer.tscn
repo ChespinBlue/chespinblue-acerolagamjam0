@@ -42,15 +42,16 @@ text = "emails"
 
 [node name="email1p" type="Button" parent="Panel/emails"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 41.0
-offset_right = 49.0
-offset_bottom = 61.0
+offset_left = 3.0
+offset_top = 35.0
+offset_right = 45.0
+offset_bottom = 55.0
 theme_override_font_sizes/font_size = 8
 text = "email #1"
 
 [node name="email1" type="Panel" parent="Panel/emails"]
 visible = false
+layout_mode = 0
 offset_left = 90.0
 offset_top = 3.0
 offset_right = 187.0
@@ -64,6 +65,37 @@ offset_right = 44.0
 offset_bottom = 25.0
 theme_override_font_sizes/font_size = 8
 text = "email #1"
+
+[node name="email2p" type="Button" parent="Panel/emails"]
+visible = false
+offset_left = 3.0
+offset_top = 53.0
+offset_right = 45.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 8
+text = "email #2"
+
+[node name="email2timer" type="Timer" parent="Panel/emails"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="email2" type="Panel" parent="Panel/emails"]
+visible = false
+offset_left = 85.0
+offset_top = 6.0
+offset_right = 182.0
+offset_bottom = 50.0
+
+[node name="Label" type="Label" parent="Panel/emails/email2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 8
+text = "email #2
+"
 
 [node name="orders" type="Panel" parent="Panel"]
 layout_mode = 0
@@ -89,5 +121,7 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="pressed" from="Panel/emails/email1p" to="." method="_on_email_1p_pressed"]
+[connection signal="pressed" from="Panel/emails/email2p" to="." method="_on_email_2p_pressed"]
+[connection signal="timeout" from="Panel/emails/email2timer" to="." method="_on_email_2_timer_timeout"]
 [connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
 [connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]
