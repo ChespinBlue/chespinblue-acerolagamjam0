@@ -25,14 +25,14 @@ offset_right = 252.0
 offset_bottom = 182.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_073us")
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="emails" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 69.0
 offset_bottom = 149.0
 
-[node name="Label" type="Label" parent="Panel/Panel"]
+[node name="email_title" type="Label" parent="Panel/emails"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 5.0
@@ -40,14 +40,39 @@ offset_right = 46.0
 offset_bottom = 28.0
 text = "emails"
 
-[node name="Panel2" type="Panel" parent="Panel"]
+[node name="email1p" type="Button" parent="Panel/emails"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 41.0
+offset_right = 49.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 8
+text = "email #1"
+
+[node name="email1" type="Panel" parent="Panel/emails"]
+visible = false
+offset_left = 90.0
+offset_top = 3.0
+offset_right = 187.0
+offset_bottom = 47.0
+
+[node name="Label" type="Label" parent="Panel/emails/email1"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 8
+text = "email #1"
+
+[node name="orders" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 83.0
 offset_right = 218.0
 offset_bottom = 149.0
 
-[node name="Label" type="Label" parent="Panel/Panel2"]
+[node name="Label" type="Label" parent="Panel/orders"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 5.0
@@ -63,5 +88,6 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
+[connection signal="pressed" from="Panel/emails/email1p" to="." method="_on_email_1p_pressed"]
 [connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
 [connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]

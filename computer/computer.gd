@@ -1,6 +1,8 @@
 extends Control
 
 @onready var screenWait = $screen_wait
+@onready var email1 = $Panel/emails/email1
+
 
 var incomputerrange = false
 var usingComputer = false
@@ -60,3 +62,12 @@ func _on_screen_wait_timeout():
 
 func _on_computertelepathybugfix_timeout():
 	incomputerrange = false
+
+
+
+################################################# EMAILS!!!
+func _on_email_1p_pressed():
+	if email1.visible == false:
+		email1.visible = true
+	else:
+		email1.visible = false

@@ -42,10 +42,7 @@ func _input(event):
 	if event.is_action_pressed("cancel"):
 		if incomputerrange == true:
 			computerSpeedBlock = false
-	
-			
-	if event.is_action_pressed("exit"):
-		get_tree().quit()
+
 
 
 

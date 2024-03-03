@@ -1,0 +1,142 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdqh3si63wo0n"]
+
+[ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_yck6u"]
+[ext_resource type="Texture2D" uid="uid://do44digaxsv6y" path="res://computer/cord.png" id="2_2l031"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swmvy"]
+size = Vector2(2, 2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4ila3"]
+b = Vector2(0, 6)
+
+[node name="string" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(140, 105)
+texture = ExtResource("1_yck6u")
+
+[node name="start" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="start"]
+shape = SubResource("RectangleShape2D_swmvy")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 2)
+node_a = NodePath("../start")
+node_b = NodePath("../segment1")
+
+[node name="segment1" type="RigidBody2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment1"]
+visible = false
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord" type="Sprite2D" parent="segment1"]
+visible = false
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(-3, 6)
+rotation = 0.613288
+node_a = NodePath("../segment1")
+node_b = NodePath("../segment2")
+
+[node name="segment2" type="RigidBody2D" parent="."]
+position = Vector2(-3, 6)
+rotation = 0.613288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment2"]
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord" type="Sprite2D" parent="segment2"]
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(-5, 10)
+rotation = 0.188364
+node_a = NodePath("../segment2")
+node_b = NodePath("../segment3")
+
+[node name="segment3" type="RigidBody2D" parent="."]
+position = Vector2(-5, 10)
+rotation = 0.188364
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment3"]
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord" type="Sprite2D" parent="segment3"]
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2(-6, 15)
+node_a = NodePath("../segment3")
+node_b = NodePath("../segment4")
+
+[node name="segment4" type="RigidBody2D" parent="."]
+position = Vector2(-6, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment4"]
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord2" type="Sprite2D" parent="segment4"]
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+position = Vector2(-5, 20)
+rotation = -0.197795
+node_a = NodePath("../segment4")
+node_b = NodePath("../segment5")
+
+[node name="segment5" type="RigidBody2D" parent="."]
+position = Vector2(-5, 20)
+rotation = -0.197795
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment5"]
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord" type="Sprite2D" parent="segment5"]
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="."]
+position = Vector2(-3, 24)
+rotation = -0.536018
+node_a = NodePath("../segment5")
+node_b = NodePath("../segment6")
+
+[node name="segment6" type="RigidBody2D" parent="."]
+position = Vector2(-3, 24)
+rotation = -0.536018
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segment6"]
+shape = SubResource("SegmentShape2D_4ila3")
+metadata/_edit_lock_ = true
+
+[node name="cord" type="Sprite2D" parent="segment6"]
+texture = ExtResource("2_2l031")
+metadata/_edit_lock_ = true
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="."]
+position = Vector2(0, 28)
+node_a = NodePath("../segment6")
+node_b = NodePath("../end")
+
+[node name="end" type="StaticBody2D" parent="."]
+position = Vector2(0, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+shape = SubResource("RectangleShape2D_swmvy")
+metadata/_edit_lock_ = true
