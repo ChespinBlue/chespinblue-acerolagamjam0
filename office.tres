@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cu5n8jj0x25g5"]
+
+[ext_resource type="StyleBox" uid="uid://cy4mulvcg1dig" path="res://styles/button_hover.tres" id="1_262od"]
+[ext_resource type="StyleBox" uid="uid://mcel7nk3txhh" path="res://styles/button_normal.tres" id="1_ncv6d"]
+[ext_resource type="FontFile" uid="uid://dkmsgh35he7cg" path="res://fonts/PixelOfficeSerrif1.ttf" id="1_rqne0"]
+[ext_resource type="StyleBox" uid="uid://d3sif2mc77aof" path="res://styles/button_pressed.tres" id="2_6sc13"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogxww"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[resource]
+default_font = ExtResource("1_rqne0")
+default_font_size = 16
+Button/font_sizes/font_size = 8
+Button/styles/hover = ExtResource("1_262od")
+Button/styles/normal = ExtResource("1_ncv6d")
+Button/styles/pressed = ExtResource("2_6sc13")
+Panel/styles/panel = SubResource("StyleBoxFlat_ogxww")

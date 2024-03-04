@@ -1,6 +1,7 @@
 extends Area2D
 var innoterange = false
 @onready var chutenote = $chutenote
+var lookingatnote = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,7 +9,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if innoterange == false:
+		chutenote.visible = false
+		
 
 
 
@@ -17,8 +20,10 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		if innoterange == true:
 			chutenote.visible = true
+			lookingatnote = true
 	if event.is_action_pressed("cancel"):
 		chutenote.visible = false
+		lookingatnote = false
 
 
 func _on_body_entered(body):

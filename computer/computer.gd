@@ -6,6 +6,10 @@ extends Control
 @onready var email2 = $Panel/emails/email2
 @onready var email2p = $Panel/emails/email2p
 
+
+
+@onready var order1 = $Panel/orders/order1
+
 var incomputerrange = false
 var usingComputer = false
 
@@ -81,3 +85,11 @@ func _on_email_2p_pressed():
 		email2.visible = false
 func _on_email_2_timer_timeout():
 	email2p.visible = true
+
+############################################### ORDERS!!!!!!!!!!!!!!!!!!!!
+func _on_order_1_button_pressed():
+	if order1.visible == false:
+		order1.visible = true
+	else:
+		order1.visible = false
+	

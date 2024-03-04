@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://3vj6bgwewf2k"]
+[gd_scene load_steps=39 format=3 uid="uid://3vj6bgwewf2k"]
 
-[ext_resource type="Script" path="res://chutenotearea.gd" id="1_rd8sq"]
+[ext_resource type="Script" path="res://enviroments/office/chutenotearea.gd" id="1_rd8sq"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_rx3ev"]
 [ext_resource type="Texture2D" uid="uid://qb3ea2q85v2j" path="res://player/player.png" id="2_dqo48"]
 [ext_resource type="Texture2D" uid="uid://bmf16vw87yufu" path="res://computer/printer.png" id="3_1qd8s"]
@@ -13,21 +13,42 @@
 [ext_resource type="Texture2D" uid="uid://cs1wlin88fpom" path="res://enviroments/office/officeWallsFloor1.png" id="5_ovx2p"]
 [ext_resource type="Script" path="res://computer/computerArea.gd" id="6_cnvcp"]
 [ext_resource type="PackedScene" uid="uid://cs7v5mof3upen" path="res://computer/computer.tscn" id="7_st8rr"]
+[ext_resource type="Theme" uid="uid://cu5n8jj0x25g5" path="res://office.tres" id="9_h15q2"]
 [ext_resource type="Texture2D" uid="uid://c3fk6mq3o1our" path="res://enviroments/office/notetile.png" id="11_7jnel"]
 [ext_resource type="Texture2D" uid="uid://cmdlmftha54ja" path="res://computer/computer_screen.png" id="11_ut2r7"]
 [ext_resource type="Texture2D" uid="uid://ds0fdmmxltuel" path="res://computer/chute.png" id="12_03e2v"]
 [ext_resource type="PackedScene" uid="uid://vvoemaq8pat0" path="res://pause_screen.tscn" id="14_m022p"]
 [ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="15_4itj6"]
 [ext_resource type="Texture2D" uid="uid://c2o3oistoahqv" path="res://enviroments/office/notefull.png" id="18_ivhnh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgr7p"]
-size = Vector2(25, 19)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll8hi"]
-bg_color = Color(0, 0, 0, 0.462745)
+[ext_resource type="Script" path="res://Work_Score.gd" id="21_28drt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7mqd"]
 size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1afj"]
+atlas = ExtResource("12_03e2v")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8maux"]
+atlas = ExtResource("12_03e2v")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1adu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1afj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8maux")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wii11"]
+size = Vector2(33, 36)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_js1t2"]
 texture = ExtResource("3_1qd8s")
@@ -298,64 +319,34 @@ sources/0 = SubResource("TileSetAtlasSource_js1t2")
 sources/9 = SubResource("TileSetAtlasSource_j3tst")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ad5g"]
-size = Vector2(7.5, 7.9375)
+size = Vector2(8.5, 5.625)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1afj"]
-atlas = ExtResource("12_03e2v")
-region = Rect2(0, 0, 24, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgr7p"]
+size = Vector2(25, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8maux"]
-atlas = ExtResource("12_03e2v")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k1adu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p1afj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8maux")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wii11"]
-size = Vector2(33, 45)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll8hi"]
+bg_color = Color(0, 0, 0, 0.392157)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
-[node name="chutenotearea" type="Area2D" parent="."]
-position = Vector2(140, 105)
-script = ExtResource("1_rd8sq")
-
-[node name="chutenoteareacollision" type="CollisionShape2D" parent="chutenotearea"]
-position = Vector2(84.5, -35.5)
-shape = SubResource("RectangleShape2D_vgr7p")
-
-[node name="chutenote" type="Sprite2D" parent="chutenotearea"]
-visible = false
-z_index = 2
-texture = ExtResource("18_ivhnh")
-
-[node name="Panel" type="Panel" parent="chutenotearea/chutenote"]
-z_index = -1
-offset_left = -140.0
-offset_top = -105.0
-offset_right = 141.0
-offset_bottom = 105.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ll8hi")
-metadata/_edit_lock_ = true
-
 [node name="yourdesklight" type="PointLight2D" parent="."]
+z_as_relative = false
 position = Vector2(104, 92)
 scale = Vector2(0.127604, 0.127604)
 energy = 0.4
+range_z_max = 2
 texture = ExtResource("3_hgxiq")
 metadata/_edit_lock_ = true
+
+[node name="computerGlow" type="PointLight2D" parent="."]
+z_as_relative = false
+position = Vector2(109, 59)
+rotation = 3.14159
+scale = Vector2(0.02, 0.02)
+energy = 0.3
+range_z_max = 2
+texture = ExtResource("11_ut2r7")
 
 [node name="player" type="CharacterBody2D" parent="."]
 process_mode = 1
@@ -373,6 +364,73 @@ y_sort_enabled = true
 position = Vector2(-1, 7)
 shape = SubResource("RectangleShape2D_k7mqd")
 metadata/_edit_lock_ = true
+
+[node name="chute" type="AnimatedSprite2D" parent="."]
+position = Vector2(252, 49)
+sprite_frames = SubResource("SpriteFrames_k1adu")
+
+[node name="Area2D" type="Area2D" parent="chute"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chute/Area2D"]
+position = Vector2(1.5, 17)
+shape = SubResource("RectangleShape2D_wii11")
+metadata/_edit_lock_ = true
+
+[node name="computer" parent="." instance=ExtResource("7_st8rr")]
+process_mode = 1
+visible = false
+z_index = 3
+
+[node name="computertelepathybugfix" type="Timer" parent="computer"]
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="pause screen" parent="." instance=ExtResource("14_m022p")]
+z_index = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="pause screen"]
+visible = false
+position = Vector2(140, 105)
+texture = ExtResource("15_4itj6")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="pause screen"]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 221.0
+theme = ExtResource("9_h15q2")
+metadata/_edit_lock_ = true
+
+[node name="exit" type="Button" parent="pause screen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 169.0
+offset_top = 98.0
+offset_right = 270.0
+offset_bottom = 129.0
+theme = ExtResource("9_h15q2")
+text = "~ quit ~"
+
+[node name="resume" type="Button" parent="pause screen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 31.0
+offset_top = 97.0
+offset_right = 130.0
+offset_bottom = 128.0
+theme = ExtResource("9_h15q2")
+text = "resume"
+
+[node name="Label" type="Label" parent="pause screen"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 47.0
+offset_right = 237.0
+offset_bottom = 70.0
+theme = ExtResource("9_h15q2")
+text = "game paused"
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -392,93 +450,64 @@ position = Vector2(111, 85)
 script = ExtResource("6_cnvcp")
 
 [node name="computerAreaCollision" type="CollisionShape2D" parent="TileMap/computerArea"]
-position = Vector2(2, 20.125)
+position = Vector2(-1, 16.75)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_6ad5g")
 
-[node name="chute" type="AnimatedSprite2D" parent="."]
-position = Vector2(252, 49)
-sprite_frames = SubResource("SpriteFrames_k1adu")
+[node name="chutenotearea" type="Area2D" parent="TileMap"]
+position = Vector2(140, 105)
+script = ExtResource("1_rd8sq")
 
-[node name="Area2D" type="Area2D" parent="chute"]
+[node name="chutenoteareacollision" type="CollisionShape2D" parent="TileMap/chutenotearea"]
+position = Vector2(84.5, -35.5)
+shape = SubResource("RectangleShape2D_vgr7p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chute/Area2D"]
-position = Vector2(1.5, 21.5)
-shape = SubResource("RectangleShape2D_wii11")
-metadata/_edit_lock_ = true
-
-[node name="computer" parent="." instance=ExtResource("7_st8rr")]
-process_mode = 1
+[node name="chutenote" type="Sprite2D" parent="TileMap/chutenotearea"]
 visible = false
-z_index = 1
+z_index = 3
+position = Vector2(2, 15)
+texture = ExtResource("18_ivhnh")
 
-[node name="computertelepathybugfix" type="Timer" parent="computer"]
-process_mode = 1
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[node name="computerGlow" type="PointLight2D" parent="computer"]
-position = Vector2(109, 59)
-rotation = 3.14159
-scale = Vector2(0.02, 0.02)
-energy = 0.3
-texture = ExtResource("11_ut2r7")
+[node name="Panel" type="Panel" parent="TileMap/chutenotearea/chutenote"]
+z_index = -1
+offset_left = -142.0
+offset_top = -120.0
+offset_right = 139.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ll8hi")
+metadata/_edit_lock_ = true
 
 [node name="boundry" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundry"]
 polygon = PackedVector2Array(24, 210, 281, 210, 281, 72, 289, 72, 289, 217, 24, 217)
 
-[node name="pause screen" parent="." instance=ExtResource("14_m022p")]
-z_index = 1
+[node name="Work_Score" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 246.0
+offset_top = 2.0
+offset_right = 286.0
+offset_bottom = 42.0
+theme = ExtResource("9_h15q2")
+script = ExtResource("21_28drt")
 
-[node name="Sprite2D" type="Sprite2D" parent="pause screen"]
-visible = false
-position = Vector2(140, 105)
-texture = ExtResource("15_4itj6")
-metadata/_edit_lock_ = true
-
-[node name="Panel" type="Panel" parent="pause screen"]
+[node name="Label" type="Label" parent="Work_Score"]
 layout_mode = 0
-offset_right = 290.0
-offset_bottom = 221.0
+offset_left = -68.0
+offset_right = 68.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 8
+text = "Work Score: "
 
-[node name="exit" type="Button" parent="pause screen"]
-process_mode = 3
-layout_mode = 0
-offset_left = 120.0
-offset_top = 147.0
-offset_right = 159.0
-offset_bottom = 178.0
-text = "quit"
-
-[node name="resume" type="Button" parent="pause screen"]
-process_mode = 3
-layout_mode = 0
-offset_left = 107.0
-offset_top = 100.0
-offset_right = 174.0
-offset_bottom = 131.0
-text = "resume"
-
-[node name="Label" type="Label" parent="pause screen"]
-layout_mode = 0
-offset_left = 118.0
-offset_top = 55.0
-offset_right = 165.0
-offset_bottom = 78.0
-text = "pause"
-metadata/_edit_lock_ = true
-
-[connection signal="body_entered" from="chutenotearea" to="chutenotearea" method="_on_body_entered"]
-[connection signal="body_exited" from="chutenotearea" to="chutenotearea" method="_on_body_exited"]
+[connection signal="timeout" from="computer/computertelepathybugfix" to="player" method="_on_computertelepathybugfix_timeout"]
+[connection signal="timeout" from="computer/computertelepathybugfix" to="computer" method="_on_computertelepathybugfix_timeout"]
+[connection signal="timeout" from="computer/computertelepathybugfix" to="TileMap/chutenotearea" method="_on_computertelepathybugfix_timeout"]
+[connection signal="pressed" from="pause screen/exit" to="pause screen" method="_on_exit_pressed"]
+[connection signal="pressed" from="pause screen/resume" to="pause screen" method="_on_resume_pressed"]
 [connection signal="body_entered" from="TileMap/computerArea" to="player" method="_on_computer_area_body_entered"]
 [connection signal="body_entered" from="TileMap/computerArea" to="computer" method="_on_computer_area_body_entered"]
 [connection signal="body_exited" from="TileMap/computerArea" to="player" method="_on_computer_area_body_exited"]
 [connection signal="body_exited" from="TileMap/computerArea" to="computer" method="_on_computer_area_body_exited"]
-[connection signal="timeout" from="computer/computertelepathybugfix" to="chutenotearea" method="_on_computertelepathybugfix_timeout"]
-[connection signal="timeout" from="computer/computertelepathybugfix" to="player" method="_on_computertelepathybugfix_timeout"]
-[connection signal="timeout" from="computer/computertelepathybugfix" to="computer" method="_on_computertelepathybugfix_timeout"]
-[connection signal="pressed" from="pause screen/exit" to="pause screen" method="_on_exit_pressed"]
-[connection signal="pressed" from="pause screen/resume" to="pause screen" method="_on_resume_pressed"]
+[connection signal="body_entered" from="TileMap/chutenotearea" to="TileMap/chutenotearea" method="_on_body_entered"]
+[connection signal="body_exited" from="TileMap/chutenotearea" to="TileMap/chutenotearea" method="_on_body_exited"]

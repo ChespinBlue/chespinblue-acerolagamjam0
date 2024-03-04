@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ga7cbaeus3uk"]
+
+[ext_resource type="FontFile" uid="uid://cw2itvtqwqdcs" path="res://fonts/PixelOfficeSans1.ttf" id="1_kd524"]
+[ext_resource type="StyleBox" uid="uid://drqp2hyroqba3" path="res://styles/computer/computerButtonHover.tres" id="2_7a6rt"]
+[ext_resource type="StyleBox" uid="uid://cvwjf4sxx0wnj" path="res://styles/computer/computerButtonNormal.tres" id="2_odf46"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x0r2"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 1
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_kd524")
+Button/styles/hover = ExtResource("2_7a6rt")
+Button/styles/normal = ExtResource("2_odf46")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 0
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_kd524")
+Panel/styles/panel = SubResource("StyleBoxFlat_2x0r2")
