@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs7v5mof3upen"]
+[gd_scene load_steps=12 format=3 uid="uid://cs7v5mof3upen"]
 
 [ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_c4noa"]
 [ext_resource type="Script" path="res://computer/computer.gd" id="1_hhnob"]
 [ext_resource type="Theme" uid="uid://ga7cbaeus3uk" path="res://styles/computer/computer.tres" id="4_nlewb"]
 [ext_resource type="StyleBox" uid="uid://drqp2hyroqba3" path="res://styles/computer/computerButtonHover.tres" id="5_7juhs"]
 [ext_resource type="Texture2D" uid="uid://o1oyl45auime" path="res://profiles/furniture.png" id="5_lehrm"]
+[ext_resource type="Texture2D" uid="uid://b34f4y5fh4e7m" path="res://profiles/FurntitureClose.png" id="6_fisxj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073us"]
 bg_color = Color(1, 1, 1, 1)
@@ -22,10 +23,14 @@ bg_color = Color(0.870588, 0.34902, 0.270588, 1)
 shadow_color = Color(0, 0, 0, 0.196078)
 shadow_size = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rret6"]
+bg_color = Color(0, 0, 0, 0.196078)
+
 [node name="computer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
+theme = ExtResource("4_nlewb")
 script = ExtResource("1_hhnob")
 metadata/_edit_use_anchors_ = true
 
@@ -58,7 +63,7 @@ offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 20.0
 theme = ExtResource("4_nlewb")
-text = "EMAILS"
+text = "INBOX"
 
 [node name="email1p" type="Button" parent="Panel/emails"]
 layout_mode = 0
@@ -90,6 +95,7 @@ theme = ExtResource("4_nlewb")
 text = "Company Wide Anouncment"
 
 [node name="body1" type="Label" parent="Panel/emails/email1"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 17.0
 offset_right = 140.0
@@ -104,7 +110,7 @@ tion is our only current
 client, but we have been
 working to fix that.
 
--Joe CEO"
+-Joe, CEO"
 
 [node name="email2p" type="Button" parent="Panel/emails"]
 visible = false
@@ -137,12 +143,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fvmcd")
 layout_mode = 0
 offset_left = 4.0
 offset_top = 2.0
-offset_right = 90.0
+offset_right = 98.0
 offset_bottom = 13.0
 theme_override_font_sizes/font_size = 8
 text = "Work From Home"
 
 [node name="body2" type="Label" parent="Panel/emails/email2"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 17.0
 offset_right = 98.0
@@ -155,14 +162,14 @@ all employees may
 work from home.
 Yipee!
 
--Jeff, Regional
+-Jeff, Floor
 Manager"
 
 [node name="orders" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 112.0
-offset_right = 218.0
+offset_right = 224.0
 offset_bottom = 154.0
 theme = ExtResource("4_nlewb")
 
@@ -181,7 +188,7 @@ text = "ORDERS -
 layout_mode = 0
 offset_left = 2.0
 offset_top = 13.0
-offset_right = 152.0
+offset_right = 158.0
 offset_bottom = 40.0
 text = "General Furniture Store
 -Commercial Location"
@@ -205,22 +212,26 @@ offset_bottom = 40.0
 text = "Purchasing:
 -118 g elecricity
 Cost:
--$580.99"
+-$580.99
+History:
+-27 previous
+orders"
 
 [node name="fraud1" type="Button" parent="Panel/orders/order1"]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 73.0
-offset_right = 71.0
-offset_bottom = 98.0
+offset_left = 77.0
+offset_top = 75.0
+offset_right = 118.0
+offset_bottom = 100.0
 theme_override_colors/font_color = Color(0.74902, 0, 0, 1)
 text = "FRUAD"
 
 [node name="real1" type="Button" parent="Panel/orders/order1"]
-offset_left = 74.0
-offset_top = 73.0
-offset_right = 115.0
-offset_bottom = 98.0
+layout_mode = 0
+offset_left = 32.0
+offset_top = 75.0
+offset_right = 73.0
+offset_bottom = 100.0
 text = "REAL"
 
 [node name="profile1" type="Button" parent="Panel/orders/order1"]
@@ -232,6 +243,23 @@ offset_bottom = 27.0
 theme = ExtResource("4_nlewb")
 theme_override_font_sizes/font_size = 0
 icon = ExtResource("5_lehrm")
+
+[node name="profileC1" type="Sprite2D" parent="Panel/orders/order1"]
+visible = false
+z_index = 1
+position = Vector2(16, 78)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fisxj")
+
+[node name="profilec1dark" type="Panel" parent="Panel/orders/order1/profileC1"]
+show_behind_parent = true
+z_index = -1
+offset_left = -53.0
+offset_top = -40.0
+offset_right = 59.0
+offset_bottom = 37.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
 
 [node name="screen transiton" type="Timer" parent="."]
 wait_time = 0.005
@@ -245,5 +273,6 @@ one_shot = true
 [connection signal="pressed" from="Panel/emails/email2p" to="." method="_on_email_2p_pressed"]
 [connection signal="timeout" from="Panel/emails/email2timer" to="." method="_on_email_2_timer_timeout"]
 [connection signal="pressed" from="Panel/orders/order1button" to="." method="_on_order_1_button_pressed"]
+[connection signal="pressed" from="Panel/orders/order1/profile1" to="." method="_on_profile_1_pressed"]
 [connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
 [connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]

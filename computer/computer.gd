@@ -7,8 +7,14 @@ extends Control
 @onready var email2p = $Panel/emails/email2p
 
 
-
+var order1done = false
+var order1F = false
 @onready var order1 = $Panel/orders/order1
+@onready var order1button = $Panel/orders/order1button
+@onready var profileC1 = $Panel/orders/order1/profileC1
+
+
+
 
 var incomputerrange = false
 var usingComputer = false
@@ -23,6 +29,15 @@ func _ready():
 func _process(delta):
 	if usingComputer == true:
 		visible = true
+	
+	
+	
+	
+	######### orders
+	if order1done == false:
+		order1button.visible = true
+	else:
+		order1button.visible = false
 
 
 
@@ -92,4 +107,8 @@ func _on_order_1_button_pressed():
 		order1.visible = true
 	else:
 		order1.visible = false
-	
+func _on_profile_1_pressed():
+	if profileC1.visible == false:
+		profileC1.visible = true
+	else:
+		profileC1.visible = false
