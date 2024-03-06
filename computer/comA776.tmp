@@ -1,0 +1,278 @@
+[gd_scene load_steps=12 format=3 uid="uid://cs7v5mof3upen"]
+
+[ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_c4noa"]
+[ext_resource type="Script" path="res://computer/computer.gd" id="1_hhnob"]
+[ext_resource type="Theme" uid="uid://ga7cbaeus3uk" path="res://styles/computer/computer.tres" id="4_nlewb"]
+[ext_resource type="StyleBox" uid="uid://drqp2hyroqba3" path="res://styles/computer/computerButtonHover.tres" id="5_7juhs"]
+[ext_resource type="Texture2D" uid="uid://o1oyl45auime" path="res://profiles/furniture.png" id="5_lehrm"]
+[ext_resource type="Texture2D" uid="uid://b34f4y5fh4e7m" path="res://profiles/FurntitureClose.png" id="6_fisxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073us"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3xnr"]
+bg_color = Color(0.870588, 0.34902, 0.270588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4sm4"]
+bg_color = Color(0.870588, 0.34902, 0.270588, 1)
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvmcd"]
+bg_color = Color(0.870588, 0.34902, 0.270588, 1)
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rret6"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[node name="computer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+theme = ExtResource("4_nlewb")
+script = ExtResource("1_hhnob")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(140, 105)
+texture = ExtResource("1_c4noa")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 252.0
+offset_bottom = 182.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_073us")
+metadata/_edit_lock_ = true
+
+[node name="emails" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 154.0
+theme = ExtResource("4_nlewb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3xnr")
+metadata/_edit_lock_ = true
+
+[node name="email_title" type="Label" parent="Panel/emails"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 20.0
+theme = ExtResource("4_nlewb")
+text = "INBOX"
+
+[node name="email1p" type="Button" parent="Panel/emails"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 71.0
+offset_bottom = 40.0
+theme = ExtResource("4_nlewb")
+toggle_mode = true
+text = "Company Wide
+Anouncment"
+
+[node name="email1" type="Panel" parent="Panel/emails"]
+visible = false
+layout_mode = 0
+offset_left = 74.0
+offset_top = 1.0
+offset_right = 216.0
+offset_bottom = 110.0
+theme = ExtResource("4_nlewb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f4sm4")
+
+[node name="title1" type="Label" parent="Panel/emails/email1"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 53.0
+offset_bottom = 14.0
+theme = ExtResource("4_nlewb")
+text = "Company Wide Anouncment"
+
+[node name="body1" type="Label" parent="Panel/emails/email1"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 140.0
+offset_bottom = 107.0
+theme = ExtResource("4_nlewb")
+text = "Despite the rumors, we
+would like to inform all
+employees that they have
+complete job security.
+Yes, Soul Power Corpera-
+tion is our only current
+client, but we have been
+working to fix that.
+
+-Joe, CEO"
+
+[node name="email2p" type="Button" parent="Panel/emails"]
+visible = false
+layout_mode = 0
+offset_top = 41.0
+offset_right = 55.0
+offset_bottom = 59.0
+theme = ExtResource("4_nlewb")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/hover = ExtResource("5_7juhs")
+toggle_mode = true
+text = "Work From
+Home"
+
+[node name="email2timer" type="Timer" parent="Panel/emails"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="email2" type="Panel" parent="Panel/emails"]
+visible = false
+layout_mode = 0
+offset_left = 103.0
+offset_top = 2.0
+offset_right = 202.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvmcd")
+
+[node name="title2" type="Label" parent="Panel/emails/email2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 98.0
+offset_bottom = 13.0
+theme_override_font_sizes/font_size = 8
+text = "Work From Home"
+
+[node name="body2" type="Label" parent="Panel/emails/email2"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 98.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 8
+text = "I have to tell all
+of you that
+starting tomorrow
+all employees may
+work from home.
+Yipee!
+
+-Jeff, Floor
+Manager"
+
+[node name="orders" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 224.0
+offset_bottom = 154.0
+theme = ExtResource("4_nlewb")
+
+[node name="orderstitle" type="Label" parent="Panel/orders"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 26.0
+theme = ExtResource("4_nlewb")
+text = "ORDERS -
+
+ no orders"
+
+[node name="order1button" type="Button" parent="Panel/orders"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 13.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "General Furniture Store
+-Commercial Location"
+icon = ExtResource("5_lehrm")
+alignment = 0
+
+[node name="order1" type="Panel" parent="Panel/orders"]
+visible = false
+layout_mode = 0
+offset_left = 26.0
+offset_top = -110.0
+offset_right = 147.0
+offset_bottom = -7.0
+
+[node name="info1" type="Label" parent="Panel/orders/order1"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 40.0
+text = "Purchasing:
+-118 g elecricity
+Cost:
+-$580.99
+History:
+-27 previous
+orders"
+
+[node name="fraud1" type="Button" parent="Panel/orders/order1"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 75.0
+offset_right = 118.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.74902, 0, 0, 1)
+text = "FRUAD"
+
+[node name="real1" type="Button" parent="Panel/orders/order1"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 75.0
+offset_right = 73.0
+offset_bottom = 100.0
+text = "REAL"
+
+[node name="profile1" type="Button" parent="Panel/orders/order1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 27.0
+offset_bottom = 27.0
+theme = ExtResource("4_nlewb")
+theme_override_font_sizes/font_size = 0
+icon = ExtResource("5_lehrm")
+
+[node name="profileC1" type="Sprite2D" parent="Panel/orders/order1"]
+visible = false
+z_index = 1
+position = Vector2(16, 78)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fisxj")
+
+[node name="profilec1dark" type="Panel" parent="Panel/orders/order1/profileC1"]
+show_behind_parent = true
+z_index = -1
+offset_left = -53.0
+offset_top = -40.0
+offset_right = 59.0
+offset_bottom = 37.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
+
+[node name="screen transiton" type="Timer" parent="."]
+wait_time = 0.005
+autostart = true
+
+[node name="screen_wait" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="Panel/emails/email1p" to="." method="_on_email_1p_pressed"]
+[connection signal="pressed" from="Panel/emails/email2p" to="." method="_on_email_2p_pressed"]
+[connection signal="timeout" from="Panel/emails/email2timer" to="." method="_on_email_2_timer_timeout"]
+[connection signal="pressed" from="Panel/orders/order1button" to="." method="_on_order_1_button_pressed"]
+[connection signal="pressed" from="Panel/orders/order1/profile1" to="." method="_on_profile_1_pressed"]
+[connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
+[connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]

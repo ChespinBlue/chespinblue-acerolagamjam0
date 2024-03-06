@@ -9,6 +9,7 @@ extends Control
 
 var order1done = false
 var order1F = false
+var orderguess = false
 @onready var order1 = $Panel/orders/order1
 @onready var order1button = $Panel/orders/order1button
 @onready var profileC1 = $Panel/orders/order1/profileC1
@@ -112,3 +113,7 @@ func _on_profile_1_pressed():
 		profileC1.visible = true
 	else:
 		profileC1.visible = false
+
+func checkorderF(x, y):
+	if orderguess == x:
+		$global.workscore += y
