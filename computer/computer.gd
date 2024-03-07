@@ -33,15 +33,6 @@ func _process(delta):
 	
 	
 	
-	
-	######### orders
-	if order1done == false:
-		order1button.visible = true
-	else:
-		order1button.visible = false
-
-
-
 
 
 func _input(event):
@@ -103,6 +94,14 @@ func _on_email_2_timer_timeout():
 	email2p.visible = true
 
 ############################################### ORDERS!!!!!!!!!!!!!!!!!!!!
+func checkorderF(x, y, z):
+	# xyz answer, reward, punishment
+	if orderguess == x:
+		global.workscore += y
+	else:
+		global.workscore -= z
+
+#####order1
 func _on_order_1_button_pressed():
 	if order1.visible == false:
 		order1.visible = true
@@ -114,6 +113,13 @@ func _on_profile_1_pressed():
 	else:
 		profileC1.visible = false
 
-func checkorderF(x, y):
-	if orderguess == x:
-		$global.workscore += y
+func _on_fraud_1_pressed():
+	orderguess = true
+	checkorderF(false, 20, 10)
+	order1.visible = false
+	order1button.visible = false
+func _on_real_1_pressed():
+	orderguess = false
+	checkorderF(false, 20, 10)
+	order1.visible = false
+	order1button.visible = false

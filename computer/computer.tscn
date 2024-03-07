@@ -273,6 +273,8 @@ one_shot = true
 [connection signal="pressed" from="Panel/emails/email2p" to="." method="_on_email_2p_pressed"]
 [connection signal="timeout" from="Panel/emails/email2timer" to="." method="_on_email_2_timer_timeout"]
 [connection signal="pressed" from="Panel/orders/order1button" to="." method="_on_order_1_button_pressed"]
+[connection signal="pressed" from="Panel/orders/order1/fraud1" to="." method="_on_fraud_1_pressed"]
+[connection signal="pressed" from="Panel/orders/order1/real1" to="." method="_on_real_1_pressed"]
 [connection signal="pressed" from="Panel/orders/order1/profile1" to="." method="_on_profile_1_pressed"]
 [connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
 [connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]
