@@ -8,4 +8,5 @@ script = ExtResource("1_i3lm0")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2(-25, 18)
 polygon = PackedVector2Array(32, -10, 55, -10, 55, -1, 55, 8, 55, 17, 32, 17, 32, 9, 32, -1)

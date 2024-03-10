@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdyepphqcud8f"
+path="res://.godot/imported/mouseclickk.mp3-cbe81c35e5f2e938b38c618c637382e4.mp3str"
+
+[deps]
+
+source_file="res://audio/sound effects/mouseclickk.mp3"
+dest_files=["res://.godot/imported/mouseclickk.mp3-cbe81c35e5f2e938b38c618c637382e4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
