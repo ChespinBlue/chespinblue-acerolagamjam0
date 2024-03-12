@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://banlls14q5vx0"
+path="res://.godot/imported/error.wav-35f56f4f71b3581768063693089f9ed8.sample"
+
+[deps]
+
+source_file="res://audio/sound effects/error.wav"
+dest_files=["res://.godot/imported/error.wav-35f56f4f71b3581768063693089f9ed8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

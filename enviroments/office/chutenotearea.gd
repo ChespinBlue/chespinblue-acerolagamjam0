@@ -21,7 +21,7 @@ func _input(event):
 		if innoterange == true:
 			chutenote.visible = true
 			lookingatnote = true
-	if event.is_action_pressed("cancel"):
+	if event.is_action_pressed("cancel") or event.is_action_pressed("click"):
 		chutenote.visible = false
 		lookingatnote = false
 

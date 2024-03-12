@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://w1bf7gbvt5oj"]
+
+[ext_resource type="Theme" uid="uid://cu5n8jj0x25g5" path="res://office.tres" id="1_506m1"]
+[ext_resource type="Script" path="res://main_menu.gd" id="2_i7iqj"]
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1120.0
+offset_bottom = -840.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("1_506m1")
+script = ExtResource("2_i7iqj")
+metadata/_edit_lock_ = true

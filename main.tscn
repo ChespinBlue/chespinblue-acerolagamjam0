@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://3vj6bgwewf2k"]
+[gd_scene load_steps=60 format=3 uid="uid://3vj6bgwewf2k"]
 
 [ext_resource type="Script" path="res://enviroments/office/chutenotearea.gd" id="1_rd8sq"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_rx3ev"]
@@ -26,10 +26,17 @@
 [ext_resource type="Script" path="res://Work_Score.gd" id="21_28drt"]
 [ext_resource type="AudioStream" uid="uid://cqvpnon80pxr4" path="res://audio/music/work1.wav" id="23_yjdff"]
 [ext_resource type="Script" path="res://music.gd" id="24_vk68e"]
+[ext_resource type="Texture2D" uid="uid://bs7uakpwidobp" path="res://computer/controls-export.png" id="25_csmlf"]
+[ext_resource type="Script" path="res://main_menu.gd" id="25_r2v55"]
 [ext_resource type="AudioStream" uid="uid://brhdxmvhbnlgx" path="res://audio/sound effects/click_1.mp3" id="26_idyfv"]
 [ext_resource type="Script" path="res://click.gd" id="27_a0u7t"]
+[ext_resource type="AudioStream" uid="uid://4ex5pk4venx1" path="res://audio/music/title.wav" id="27_nmjkd"]
 [ext_resource type="AudioStream" uid="uid://bdyepphqcud8f" path="res://audio/sound effects/mouseclickk.mp3" id="28_2f1hn"]
 [ext_resource type="Script" path="res://mouse click.gd" id="29_n6bno"]
+[ext_resource type="AudioStream" uid="uid://banlls14q5vx0" path="res://audio/sound effects/error.wav" id="34_rhn47"]
+[ext_resource type="Script" path="res://error.gd" id="35_brjad"]
+[ext_resource type="Script" path="res://success.gd" id="36_1iw30"]
+[ext_resource type="AudioStream" uid="uid://crlbqv6ck6etc" path="res://audio/sound effects/good.wav" id="36_21q8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7mqd"]
 size = Vector2(18, 18)
@@ -345,11 +352,30 @@ size = Vector2(8.5, 5.625)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjfj8"]
 size = Vector2(28, 40)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we0nw"]
+bg_color = Color(0, 0, 0, 0.313726)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.156863)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgr7p"]
 size = Vector2(17, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll8hi"]
 bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djlh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x61s3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.25, 0.25, 1)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -450,8 +476,17 @@ offset_left = 246.0
 offset_top = 2.0
 offset_right = 286.0
 offset_bottom = 42.0
+size_flags_horizontal = 4
 theme = ExtResource("9_h15q2")
 script = ExtResource("21_28drt")
+
+[node name="Panel" type="Panel" parent="UI/Work_Score"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = -6.0
+offset_right = 39.0
+offset_bottom = 12.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_we0nw")
 
 [node name="Label" type="Label" parent="UI/Work_Score"]
 layout_mode = 0
@@ -550,19 +585,152 @@ offset_right = 78.0
 offset_bottom = 217.0
 text = "day:"
 
+[node name="Main Menu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_h15q2")
+script = ExtResource("25_r2v55")
+
+[node name="titlemusic" type="AudioStreamPlayer" parent="UI/Main Menu"]
+stream = ExtResource("27_nmjkd")
+volume_db = -10.0
+autoplay = true
+
+[node name="back color" type="Panel" parent="UI/Main Menu"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 210.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3djlh")
+metadata/_edit_lock_ = true
+
+[node name="title" type="Label" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 60.0
+offset_top = 22.0
+offset_right = 172.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Game Title
+-------"
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 74.0
+offset_top = 58.0
+offset_right = 157.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "start"
+
+[node name="controls" type="Button" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 90.0
+offset_right = 157.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "controls"
+
+[node name="quitgame" type="Button" parent="UI/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 122.0
+offset_right = 156.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "quit"
+
+[node name="controls2" type="Sprite2D" parent="UI/Main Menu"]
+visible = false
+z_index = 1
+position = Vector2(142, 102)
+texture = ExtResource("25_csmlf")
+
+[node name="Panel" type="Panel" parent="UI/Main Menu/controls2"]
+z_index = -1
+offset_left = -142.0
+offset_top = -102.0
+offset_right = 138.0
+offset_bottom = 108.0
+mouse_filter = 2
+theme = ExtResource("9_h15q2")
+
+[node name="text_box" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_h15q2")
+
+[node name="box" type="Panel" parent="UI/text_box"]
+layout_mode = 0
+offset_top = 143.0
+offset_right = 280.0
+offset_bottom = 210.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x61s3")
+
+[node name="text" type="Label" parent="UI/text_box/box"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 8
+text = "words"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/text_box/box"]
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_yjdff")
-volume_db = -11.157
 script = ExtResource("24_vk68e")
 
 [node name="button click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_idyfv")
-volume_db = -9.0
+volume_db = -10.0
 script = ExtResource("27_a0u7t")
 
 [node name="mouse click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_2f1hn")
+volume_db = 4.0
 script = ExtResource("29_n6bno")
+
+[node name="error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_rhn47")
+volume_db = -10.0
+script = ExtResource("35_brjad")
+
+[node name="success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_21q8o")
+volume_db = -10.0
+script = ExtResource("36_1iw30")
 
 [connection signal="body_entered" from="TileMap/computerArea" to="player" method="_on_computer_area_body_entered"]
 [connection signal="body_entered" from="TileMap/computerArea" to="UI/computer" method="_on_computer_area_body_entered"]
@@ -570,6 +738,8 @@ script = ExtResource("29_n6bno")
 [connection signal="body_exited" from="TileMap/computerArea" to="UI/computer" method="_on_computer_area_body_exited"]
 [connection signal="body_entered" from="TileMap/exitDoorArea" to="TileMap/exitDoorArea" method="_on_body_entered"]
 [connection signal="body_exited" from="TileMap/exitDoorArea" to="TileMap/exitDoorArea" method="_on_body_exited"]
+[connection signal="ordererror" from="UI/computer" to="error" method="_on_computer_ordererror"]
+[connection signal="ordersuccess" from="UI/computer" to="success" method="_on_computer_ordersuccess"]
 [connection signal="timeout" from="UI/computer/computertelepathybugfix" to="player" method="_on_computertelepathybugfix_timeout"]
 [connection signal="timeout" from="UI/computer/computertelepathybugfix" to="UI/computer" method="_on_computertelepathybugfix_timeout"]
 [connection signal="timeout" from="UI/computer/computertelepathybugfix" to="UI/chutenotearea" method="_on_computertelepathybugfix_timeout"]
@@ -579,3 +749,10 @@ script = ExtResource("29_n6bno")
 [connection signal="pressed" from="UI/pause screen/exit" to="button click" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/pause screen/resume" to="UI/pause screen" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/pause screen/resume" to="button click" method="_on_resume_pressed"]
+[connection signal="finished" from="UI/Main Menu/titlemusic" to="UI/Main Menu" method="_on_titlemusic_finished"]
+[connection signal="pressed" from="UI/Main Menu/start" to="UI/Main Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Main Menu/start" to="button click" method="_on_start_pressed"]
+[connection signal="button_down" from="UI/Main Menu/controls" to="UI/Main Menu" method="_on_controls_button_down"]
+[connection signal="pressed" from="UI/Main Menu/controls" to="button click" method="_on_controls_pressed"]
+[connection signal="button_down" from="UI/Main Menu/quitgame" to="button click" method="_on_quitgame_button_down"]
+[connection signal="button_up" from="UI/Main Menu/quitgame" to="UI/Main Menu" method="_on_quitgame_button_up"]
