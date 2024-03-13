@@ -1,5 +1,6 @@
-[gd_scene load_steps=60 format=3 uid="uid://3vj6bgwewf2k"]
+[gd_scene load_steps=66 format=3 uid="uid://3vj6bgwewf2k"]
 
+[ext_resource type="Script" path="res://computer/paper.gd" id="1_2d4h2"]
 [ext_resource type="Script" path="res://enviroments/office/chutenotearea.gd" id="1_rd8sq"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_rx3ev"]
 [ext_resource type="Texture2D" uid="uid://qb3ea2q85v2j" path="res://player/player.png" id="2_dqo48"]
@@ -33,10 +34,15 @@
 [ext_resource type="AudioStream" uid="uid://4ex5pk4venx1" path="res://audio/music/title.wav" id="27_nmjkd"]
 [ext_resource type="AudioStream" uid="uid://bdyepphqcud8f" path="res://audio/sound effects/mouseclickk.mp3" id="28_2f1hn"]
 [ext_resource type="Script" path="res://mouse click.gd" id="29_n6bno"]
+[ext_resource type="Script" path="res://music start timer.gd" id="30_0ic14"]
+[ext_resource type="Script" path="res://music_work2.gd" id="30_iug26"]
+[ext_resource type="AudioStream" uid="uid://cnbn3n7jrdk61" path="res://audio/music/work2.wav" id="30_jwt24"]
+[ext_resource type="Script" path="res://music 2 timer.gd" id="32_msu4t"]
 [ext_resource type="AudioStream" uid="uid://banlls14q5vx0" path="res://audio/sound effects/error.wav" id="34_rhn47"]
 [ext_resource type="Script" path="res://error.gd" id="35_brjad"]
 [ext_resource type="Script" path="res://success.gd" id="36_1iw30"]
 [ext_resource type="AudioStream" uid="uid://crlbqv6ck6etc" path="res://audio/sound effects/good.wav" id="36_21q8o"]
+[ext_resource type="PackedScene" uid="uid://b430ei37awn3b" path="res://computer/paper.tscn" id="43_hl6b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7mqd"]
 size = Vector2(18, 18)
@@ -379,6 +385,7 @@ border_color = Color(0.25, 0.25, 0.25, 1)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_2d4h2")
 
 [node name="yourdesklight" type="PointLight2D" parent="."]
 z_as_relative = false
@@ -401,7 +408,7 @@ texture = ExtResource("11_ut2r7")
 [node name="player" type="CharacterBody2D" parent="."]
 process_mode = 1
 y_sort_enabled = true
-position = Vector2(177, 128)
+position = Vector2(119, 120)
 script = ExtResource("1_rx3ev")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
@@ -417,6 +424,7 @@ metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../Camera2D")
+metadata/_edit_lock_ = true
 
 [node name="chute" type="AnimatedSprite2D" parent="."]
 position = Vector2(252, 49)
@@ -461,13 +469,14 @@ shape = SubResource("RectangleShape2D_mjfj8")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(177, 128)
+position = Vector2(119, 120)
 limit_left = 0
 limit_top = 0
 limit_right = 475
 limit_bottom = 450
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Work_Score" type="Control" parent="UI"]
 layout_mode = 3
@@ -595,7 +604,6 @@ script = ExtResource("25_r2v55")
 
 [node name="titlemusic" type="AudioStreamPlayer" parent="UI/Main Menu"]
 stream = ExtResource("27_nmjkd")
-volume_db = -10.0
 autoplay = true
 
 [node name="back color" type="Panel" parent="UI/Main Menu"]
@@ -708,9 +716,25 @@ text = "words"
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/text_box/box"]
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="music_work1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_yjdff")
+volume_db = -10.0
 script = ExtResource("24_vk68e")
+
+[node name="music_work2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_jwt24")
+volume_db = -10.0
+script = ExtResource("30_iug26")
+
+[node name="music start timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("30_0ic14")
+
+[node name="music 2 timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("32_msu4t")
 
 [node name="button click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_idyfv")
@@ -732,6 +756,9 @@ stream = ExtResource("36_21q8o")
 volume_db = -10.0
 script = ExtResource("36_1iw30")
 
+[node name="paper" parent="." instance=ExtResource("43_hl6b6")]
+position = Vector2(75, 89)
+
 [connection signal="body_entered" from="TileMap/computerArea" to="player" method="_on_computer_area_body_entered"]
 [connection signal="body_entered" from="TileMap/computerArea" to="UI/computer" method="_on_computer_area_body_entered"]
 [connection signal="body_exited" from="TileMap/computerArea" to="player" method="_on_computer_area_body_exited"]
@@ -749,6 +776,7 @@ script = ExtResource("36_1iw30")
 [connection signal="pressed" from="UI/pause screen/exit" to="button click" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/pause screen/resume" to="UI/pause screen" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/pause screen/resume" to="button click" method="_on_resume_pressed"]
+[connection signal="startmusic" from="UI/Main Menu" to="music start timer" method="_on_main_menu_startmusic"]
 [connection signal="finished" from="UI/Main Menu/titlemusic" to="UI/Main Menu" method="_on_titlemusic_finished"]
 [connection signal="pressed" from="UI/Main Menu/start" to="UI/Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UI/Main Menu/start" to="button click" method="_on_start_pressed"]
@@ -756,3 +784,8 @@ script = ExtResource("36_1iw30")
 [connection signal="pressed" from="UI/Main Menu/controls" to="button click" method="_on_controls_pressed"]
 [connection signal="button_down" from="UI/Main Menu/quitgame" to="button click" method="_on_quitgame_button_down"]
 [connection signal="button_up" from="UI/Main Menu/quitgame" to="UI/Main Menu" method="_on_quitgame_button_up"]
+[connection signal="finished" from="music_work2" to="music_work2" method="_on_finished"]
+[connection signal="music22start" from="music_work2" to="music start timer" method="_on_music_work_2_music_22_start"]
+[connection signal="music2start" from="music_work2" to="music 2 timer" method="_on_music_work_2_music_2_start"]
+[connection signal="timeout" from="music start timer" to="music_work1" method="_on_music_start_timer_timeout"]
+[connection signal="timeout" from="music 2 timer" to="music_work2" method="_on_music_2_timer_timeout"]

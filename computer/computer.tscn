@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cs7v5mof3upen"]
+[gd_scene load_steps=20 format=3 uid="uid://cs7v5mof3upen"]
 
 [ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_c4noa"]
 [ext_resource type="Script" path="res://computer/computer.gd" id="1_hhnob"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c3ukjdnp5femi" path="res://profiles/normalmanClose.png" id="8_c3rar"]
 [ext_resource type="Texture2D" uid="uid://bjdelp62yrbdw" path="res://profiles/plumber.png" id="8_p5deu"]
 [ext_resource type="Texture2D" uid="uid://ccnyyvjt5hdfx" path="res://computer/wallpaper.png" id="10_fd2p2"]
+[ext_resource type="Texture2D" uid="uid://d24pkpy11atvf" path="res://profiles/plumberClose.png" id="12_82whe"]
+[ext_resource type="Texture2D" uid="uid://bx8jnx2bbqmf2" path="res://profiles/man.png" id="13_tshux"]
+[ext_resource type="Texture2D" uid="uid://cmc1k2l8ysmql" path="res://profiles/manClose.png" id="14_go3ak"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073us"]
 bg_color = Color(1, 1, 1, 0)
@@ -57,6 +60,7 @@ metadata/_edit_lock_ = true
 position = Vector2(112.024, 76.875)
 scale = Vector2(0.246102, 0.210724)
 texture = ExtResource("10_fd2p2")
+metadata/_edit_lock_ = true
 
 [node name="emails" type="Panel" parent="Panel"]
 layout_mode = 0
@@ -174,6 +178,7 @@ Manager"
 
 [node name="email3p" type="Button" parent="Panel/emails"]
 visible = false
+layout_mode = 0
 offset_top = 60.0
 offset_right = 56.0
 offset_bottom = 78.0
@@ -186,6 +191,7 @@ From Home"
 
 [node name="email3" type="Panel" parent="Panel/emails"]
 visible = false
+layout_mode = 0
 offset_left = 79.0
 offset_top = 3.0
 offset_right = 214.0
@@ -238,6 +244,7 @@ text = "ORDERS -
  no orders"
 
 [node name="order2button" type="Button" parent="Panel/orders"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 13.0
 offset_right = 158.0
@@ -248,6 +255,7 @@ icon = ExtResource("5_lehrm")
 alignment = 0
 
 [node name="order3button" type="Button" parent="Panel/orders"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 13.0
 offset_right = 158.0
@@ -268,8 +276,20 @@ text = "General Furniture Store
 icon = ExtResource("5_lehrm")
 alignment = 0
 
+[node name="order5button" type="Button" parent="Panel/orders"]
+visible = false
+offset_left = 2.0
+offset_top = 13.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "Nermin Mermal
+-Account request"
+icon = ExtResource("13_tshux")
+alignment = 0
+
 [node name="order4button" type="Button" parent="Panel/orders"]
 visible = false
+layout_mode = 0
 offset_left = 2.0
 offset_top = 13.0
 offset_right = 158.0
@@ -347,6 +367,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
 
 [node name="order3" type="Panel" parent="Panel/orders"]
 visible = false
+layout_mode = 0
 offset_left = 22.0
 offset_top = -108.0
 offset_right = 143.0
@@ -412,6 +433,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
 
 [node name="order2" type="Panel" parent="Panel/orders"]
 visible = false
+layout_mode = 0
 offset_left = 18.0
 offset_top = -107.0
 offset_right = 148.0
@@ -476,107 +498,46 @@ offset_bottom = 409.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
 
-[node name="orderTemplate" type="Panel" parent="Panel/orders"]
-visible = false
-offset_left = 24.0
-offset_top = -105.0
-offset_right = 145.0
-offset_bottom = -2.0
-
-[node name="info2" type="Label" parent="Panel/orders/orderTemplate"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 4.0
-offset_right = 119.0
-offset_bottom = 40.0
-text = "Purchasing:
--118 g elecricity
-Cost:
--$580.99
-History:
--27 previous
-orders"
-
-[node name="fraud2" type="Button" parent="Panel/orders/orderTemplate"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 75.0
-offset_right = 118.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0.74902, 0, 0, 1)
-text = "FRUAD"
-
-[node name="real2" type="Button" parent="Panel/orders/orderTemplate"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 75.0
-offset_right = 73.0
-offset_bottom = 100.0
-text = "REAL"
-
-[node name="profile2" type="Button" parent="Panel/orders/orderTemplate"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 27.0
-offset_bottom = 27.0
-theme = ExtResource("4_nlewb")
-theme_override_font_sizes/font_size = 0
-icon = ExtResource("5_lehrm")
-
-[node name="profileC2" type="Sprite2D" parent="Panel/orders/orderTemplate"]
-visible = false
-z_index = 1
-position = Vector2(16, 78)
-scale = Vector2(2, 2)
-texture = ExtResource("6_fisxj")
-
-[node name="profilec2dark" type="Panel" parent="Panel/orders/orderTemplate/profileC2"]
-show_behind_parent = true
-z_index = -1
-offset_left = -53.0
-offset_top = -40.0
-offset_right = 59.0
-offset_bottom = 37.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
-
 [node name="order4" type="Panel" parent="Panel/orders"]
 visible = false
-offset_left = 23.0
+layout_mode = 0
+offset_left = 11.0
 offset_top = -106.0
-offset_right = 150.0
-offset_bottom = -3.0
+offset_right = 155.0
+offset_bottom = -10.0
 
 [node name="info4" type="Label" parent="Panel/orders/order4"]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 4.0
-offset_right = 119.0
-offset_bottom = 40.0
+offset_right = 142.0
+offset_bottom = 113.0
 text = "Purchasing:
--202 g elecrticity
+-202 g electricity
 Cost:
 -$804.99
 History:
-- previous
-orders"
+-10 previous
+orders
+
+Note: Need plumbing?
+call 1+123-4567-8910!"
 
 [node name="fraud4" type="Button" parent="Panel/orders/order4"]
 layout_mode = 0
-offset_left = 83.0
-offset_top = 75.0
-offset_right = 124.0
-offset_bottom = 100.0
+offset_left = 2.0
+offset_top = 58.0
+offset_right = 33.0
+offset_bottom = 83.0
 theme_override_colors/font_color = Color(0.74902, 0, 0, 1)
 text = "FRUAD"
 
 [node name="real4" type="Button" parent="Panel/orders/order4"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 75.0
-offset_right = 79.0
-offset_bottom = 100.0
+offset_left = 3.0
+offset_top = 31.0
+offset_right = 32.0
+offset_bottom = 56.0
 text = "REAL"
 
 [node name="profile4" type="Button" parent="Panel/orders/order4"]
@@ -594,17 +555,84 @@ visible = false
 z_index = 1
 position = Vector2(16, 78)
 scale = Vector2(2, 2)
-texture = ExtResource("6_fisxj")
+texture = ExtResource("12_82whe")
 
 [node name="profilec4dark" type="Panel" parent="Panel/orders/order4/profileC4"]
 show_behind_parent = true
 z_index = -1
-offset_left = -53.0
-offset_top = -40.0
-offset_right = 59.0
-offset_bottom = 37.0
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 67.0
+offset_bottom = 35.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
+
+[node name="order5" type="Panel" parent="Panel/orders"]
+visible = false
+offset_left = 11.0
+offset_top = -106.0
+offset_right = 155.0
+offset_bottom = -21.0
+
+[node name="info5" type="Label" parent="Panel/orders/order5"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 4.0
+offset_right = 142.0
+offset_bottom = 113.0
+text = "Request to delete
+acount.
+History:
+-18 previous
+orders
+
+Note: I only wear
+yellow shirts."
+
+[node name="fraud5" type="Button" parent="Panel/orders/order5"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 58.0
+offset_right = 33.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.74902, 0, 0, 1)
+text = "FRUAD"
+
+[node name="real5" type="Button" parent="Panel/orders/order5"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 31.0
+offset_right = 32.0
+offset_bottom = 56.0
+text = "REAL"
+
+[node name="profile5" type="Button" parent="Panel/orders/order5"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 27.0
+offset_bottom = 27.0
+theme = ExtResource("4_nlewb")
+theme_override_font_sizes/font_size = 0
+icon = ExtResource("13_tshux")
+
+[node name="profileC5" type="Sprite2D" parent="Panel/orders/order5"]
+visible = false
+z_index = 1
+position = Vector2(30, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("14_go3ak")
+
+[node name="profilec5dark" type="Panel" parent="Panel/orders/order5/profileC5"]
+show_behind_parent = true
+z_index = -1
+offset_left = -53.0
+offset_top = -39.0
+offset_right = 60.0
+offset_bottom = 38.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rret6")
+metadata/_edit_lock_ = true
 
 [node name="screen transiton" type="Timer" parent="."]
 wait_time = 0.005
@@ -620,6 +648,8 @@ one_shot = true
 [connection signal="pressed" from="Panel/orders/order2button" to="." method="_on_order_2_button_pressed"]
 [connection signal="pressed" from="Panel/orders/order3button" to="." method="_on_order_3_button_pressed"]
 [connection signal="pressed" from="Panel/orders/order1button" to="." method="_on_order_1_button_pressed"]
+[connection signal="pressed" from="Panel/orders/order5button" to="." method="_on_order_5_button_pressed"]
+[connection signal="pressed" from="Panel/orders/order4button" to="." method="_on_order_4_button_pressed"]
 [connection signal="pressed" from="Panel/orders/order1/fraud1" to="." method="_on_fraud_1_pressed"]
 [connection signal="pressed" from="Panel/orders/order1/real1" to="." method="_on_real_1_pressed"]
 [connection signal="pressed" from="Panel/orders/order1/profile1" to="." method="_on_profile_1_pressed"]
@@ -632,5 +662,8 @@ one_shot = true
 [connection signal="pressed" from="Panel/orders/order4/fraud4" to="." method="_on_fraud_4_pressed"]
 [connection signal="pressed" from="Panel/orders/order4/real4" to="." method="_on_real_4_pressed"]
 [connection signal="pressed" from="Panel/orders/order4/profile4" to="." method="_on_profile_4_pressed"]
+[connection signal="pressed" from="Panel/orders/order5/fraud5" to="." method="_on_fraud_5_pressed"]
+[connection signal="pressed" from="Panel/orders/order5/real5" to="." method="_on_real_5_pressed"]
+[connection signal="pressed" from="Panel/orders/order5/profile5" to="." method="_on_profile_5_pressed"]
 [connection signal="timeout" from="screen transiton" to="." method="_on_screen_transiton_timeout"]
 [connection signal="timeout" from="screen_wait" to="." method="_on_screen_wait_timeout"]

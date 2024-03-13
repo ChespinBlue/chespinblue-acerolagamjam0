@@ -1,12 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://b430ei37awn3b"]
+[gd_scene load_steps=5 format=3 uid="uid://b430ei37awn3b"]
 
 [ext_resource type="Script" path="res://computer/paper.gd" id="1_i3lm0"]
+[ext_resource type="Texture2D" uid="uid://c5dw0nfow55mk" path="res://computer/paper.png" id="2_pkrcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txoyw"]
+size = Vector2(11, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy7er"]
+size = Vector2(44, 2)
 
 [node name="paper" type="Node2D"]
 script = ExtResource("1_i3lm0")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-position = Vector2(-25, 18)
-polygon = PackedVector2Array(32, -10, 55, -10, 55, -1, 55, 8, 55, 17, 32, 17, 32, 9, 32, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(5.5, 7)
+shape = SubResource("RectangleShape2D_txoyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.5, 7)
+texture = ExtResource("2_pkrcp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(5, 42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_sy7er")
+metadata/_edit_lock_ = true

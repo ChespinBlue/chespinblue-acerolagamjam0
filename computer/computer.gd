@@ -27,9 +27,15 @@ var order3F = true
 @onready var order3button = $Panel/orders/order3button
 @onready var profileC3 = $Panel/orders/order3/profileC3
 var order4F = false
+var order4done = false
 @onready var order4 = $Panel/orders/order4
 @onready var order4button = $Panel/orders/order4button
 @onready var profileC4 = $Panel/orders/order4/profileC4
+var order5F = true
+var order5done = false
+@onready var order5 = $Panel/orders/order5
+@onready var order5button = $Panel/orders/order5button
+@onready var profileC5 = $Panel/orders/order5/profileC5
 
 
 var incomputerrange = false
@@ -41,7 +47,10 @@ func _process(_delta):
 	if global.day == 2:
 		email2p.visible = true
 		email3p.visible = true
-		order4button.visible = true
+		if order4done == false:
+			order4button.visible = true
+		if order5done == false:
+			order5button.visible = true
 	
 func _input(event):
 	if event.is_action_pressed("interact"):
@@ -57,6 +66,8 @@ func _input(event):
 	if event.is_action_pressed("click"):
 		profileC1.visible = false
 		profileC2.visible = false
+		profileC3.visible = false
+		profileC4.visible = false
 			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -173,12 +184,12 @@ func _on_profile_3_pressed():
 
 func _on_fraud_3_pressed():
 	orderguess = true
-	checkorderF(order3F, 5, 10)
+	checkorderF(order3F, 5, 15)
 	order3.visible = false
 	order3button.visible = false
 func _on_real_3_pressed():
 	orderguess = false
-	checkorderF(order3F, 5, 10)
+	checkorderF(order3F, 5, 15)
 	order3.visible = false
 	order3button.visible = false
 
@@ -197,10 +208,36 @@ func _on_profile_4_pressed():
 func _on_fraud_4_pressed():
 	orderguess = true
 	checkorderF(order4F, 5, 10)
-	order3.visible = false
-	order3button.visible = false
+	order4.visible = false
+	order4button.visible = false
+	order4done = true
 func _on_real_4_pressed():
 	orderguess = false
-	checkorderF(order3F, 5, 10)
-	order3.visible = false
-	order3button.visible = false
+	checkorderF(order4F, 5, 10)
+	order4.visible = false
+	order4button.visible = false
+	order4done = true
+#####order5
+func _on_order_5_button_pressed():
+	if order5.visible == false:
+		order5.visible = true
+	else:
+		order5.visible = false
+func _on_profile_5_pressed():
+	if profileC5.visible == false:
+		profileC5.visible = true
+	else:
+		profileC5.visible = false
+
+func _on_fraud_5_pressed():
+	orderguess = true
+	checkorderF(order5F, 5, 15)
+	order5.visible = false
+	order5button.visible = false
+	order5done = true
+func _on_real_5_pressed():
+	orderguess = false
+	checkorderF(order5F, 5, 15)
+	order5.visible = false
+	order5button.visible = false
+	order5done = true

@@ -1,7 +1,7 @@
 extends Control
 
 var lookingatcontrols = false
-
+signal startmusic
 
 
 #### controls
@@ -18,6 +18,7 @@ func _on_start_pressed():
 	if lookingatcontrols == false:
 		visible = false
 		$titlemusic.stop()
+		startmusic.emit()
 
 ### quit
 func _on_quitgame_button_up():
