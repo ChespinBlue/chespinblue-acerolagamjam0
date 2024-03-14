@@ -80,4 +80,3 @@ func _on_computer_area_body_entered(body):
 
 func _on_computertelepathybugfix_timeout():
 	incomputerrange = false
-

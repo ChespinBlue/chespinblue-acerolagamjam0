@@ -1,5 +1,8 @@
 extends Control
 
+signal winer
+signal showmail5
+
 @onready var screenWait = $screen_wait
 
 
@@ -8,6 +11,10 @@ extends Control
 @onready var email2p = $Panel/emails/email2p
 @onready var email3 = $Panel/emails/email3
 @onready var email3p = $Panel/emails/email3p
+@onready var email4 = $Panel/emails/email4
+@onready var email4p = $Panel/emails/email4p
+@onready var email5 = $Panel/emails/email5
+@onready var email5p = $Panel/emails/email5p
 
 
 var orderguess = false
@@ -109,7 +116,20 @@ func _on_email_3p_pressed():
 		email3.visible = true
 	else:
 		email3.visible = false
-
+		
+func _on_email_4p_pressed():
+	if email4.visible == false:
+		email4.visible = true
+	else:
+		email4.visible = false
+		
+func _on_email_5_timer_timeout():
+	email5p.visible = true
+func _on_email_5p_pressed():
+	if email5.visible == false:
+		email5.visible = true
+	else:
+		email5.visible = false
 ################################################################################ ORDERS!!!!!!!!!!!!!!!!!!!!
 func checkorderF(x, y, z):
 	# xyz answer, reward, punishment
@@ -235,9 +255,20 @@ func _on_fraud_5_pressed():
 	order5.visible = false
 	order5button.visible = false
 	order5done = true
+	##end
+	winer.emit()
+	email4p.visible = true
+	showmail5.emit()
 func _on_real_5_pressed():
 	orderguess = false
 	checkorderF(order5F, 5, 15)
 	order5.visible = false
 	order5button.visible = false
 	order5done = true
+	##end
+	winer.emit()
+	email4p.visible = true
+	showmail5.emit()
+
+
+

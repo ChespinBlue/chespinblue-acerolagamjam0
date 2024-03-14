@@ -1,18 +1,35 @@
 extends Node2D
 
-const paper_scene = preload("res://computer/paper.tscn")
+var paperscript = load("res://computer/paper.gd")
+
+var paper_scene = preload("res://computer/paper.tscn")
+@onready var parent_node = get_node("TileMap")
+
+
+
+signal soundstartt
+
+func _process(delta):
+	var paper_scene = preload("res://computer/paper.tscn")
 
 
 func _ready():
-	pass # Replace with function body.
-func _process(delta):
+	$TileMap/paper.queue_free()
 	pass
 
+ 
 
 
 func spawnpaper():
-	$paper.queue_free()
-	$paper.get_tree().reload_current_scene()
+	var new_paper = paper_scene.instantiate()
+	soundstartt.emit()
+	#$paper.queue_free()
+	#var new_paper = paper_scene.instantiate()
+	parent_node.add_child(new_paper)
+	new_paper.position.x = 74
+	new_paper.position.y = 90
+	new_paper.name = "new_paper"
+	
 
 
 
@@ -20,3 +37,7 @@ func _input(event):
 	if event.is_action_pressed("test"):
 		#queue_free()
 		spawnpaper()
+		pass
+	if event.is_action_pressed("cancel"):
+		#$TileMap/new_paper.queue_free()
+		pass

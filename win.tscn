@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkx0gdlvdktwl"]
+
+[ext_resource type="Theme" uid="uid://cu5n8jj0x25g5" path="res://office.tres" id="1_53mkr"]
+[ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_ep06p"]
+
+[node name="win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_53mkr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(140, 105)
+texture = ExtResource("1_ep06p")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 91.0
+offset_top = 57.0
+offset_right = 191.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "you won!"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 56.0
+offset_right = 186.0
+offset_bottom = 79.0
+text = "you won!"

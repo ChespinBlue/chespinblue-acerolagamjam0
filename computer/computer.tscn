@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cs7v5mof3upen"]
+[gd_scene load_steps=21 format=3 uid="uid://cs7v5mof3upen"]
 
 [ext_resource type="Texture2D" uid="uid://cacyy7heup80l" path="res://computer/computer_frame.png" id="1_c4noa"]
 [ext_resource type="Script" path="res://computer/computer.gd" id="1_hhnob"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://o1oyl45auime" path="res://profiles/furniture.png" id="5_lehrm"]
 [ext_resource type="Texture2D" uid="uid://bvwqw4nkbb1st" path="res://profiles/normalman.png" id="6_cpi80"]
 [ext_resource type="Texture2D" uid="uid://b34f4y5fh4e7m" path="res://profiles/FurntitureClose.png" id="6_fisxj"]
+[ext_resource type="Script" path="res://computer/email5timer.gd" id="6_uavkn"]
 [ext_resource type="Texture2D" uid="uid://vyasg1128cxk" path="res://profiles/FurnitureFclose.jpg" id="7_vm1e1"]
 [ext_resource type="Texture2D" uid="uid://c3ukjdnp5femi" path="res://profiles/normalmanClose.png" id="8_c3rar"]
 [ext_resource type="Texture2D" uid="uid://bjdelp62yrbdw" path="res://profiles/plumber.png" id="8_p5deu"]
@@ -224,6 +225,105 @@ back up. Have a fun time!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -Jeff, Floor
 Manager"
 
+[node name="email4p" type="Button" parent="Panel/emails"]
+visible = false
+offset_top = 79.0
+offset_right = 56.0
+offset_bottom = 97.0
+theme = ExtResource("4_nlewb")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/hover = ExtResource("5_7juhs")
+toggle_mode = true
+text = "Important
+Employment
+Status Email"
+
+[node name="email4" type="Panel" parent="Panel/emails"]
+visible = false
+offset_left = 74.0
+offset_top = 4.0
+offset_right = 221.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvmcd")
+
+[node name="title4" type="Label" parent="Panel/emails/email4"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 145.0
+offset_bottom = 13.0
+theme_override_font_sizes/font_size = 8
+text = "Important Employment Status Email"
+text_overrun_behavior = 3
+
+[node name="body4" type="Label" parent="Panel/emails/email4"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 11.0
+offset_right = 145.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 8
+text = "[group email]
+Due to a recent contract
+with another company, all
+employees will be immediatly
+terminated. Corporate
+Financing Inc. will run
+primarily on the new
+\"generative AI\" technology.
+Goodbye.
+
+-Joe, CEO"
+
+[node name="email5p" type="Button" parent="Panel/emails"]
+visible = false
+offset_top = 107.0
+offset_right = 61.0
+offset_bottom = 125.0
+theme = ExtResource("4_nlewb")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/hover = ExtResource("5_7juhs")
+toggle_mode = true
+text = "Clarification"
+
+[node name="email5" type="Panel" parent="Panel/emails"]
+visible = false
+offset_left = 74.0
+offset_top = 1.0
+offset_right = 222.0
+offset_bottom = 88.0
+theme = ExtResource("4_nlewb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f4sm4")
+
+[node name="title5" type="Label" parent="Panel/emails/email5"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 53.0
+offset_bottom = 14.0
+theme = ExtResource("4_nlewb")
+text = "Clarification"
+
+[node name="body5" type="Label" parent="Panel/emails/email5"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 139.0
+offset_bottom = 111.0
+theme = ExtResource("4_nlewb")
+text = "[group email]
+Don't worry guys, \"all
+eployees will be terminated\"
+does NOT mean killed! I was
+worried too when I first
+saw that.
+
+-Jeff, Floor Manager"
+
+[node name="email5timer" type="Timer" parent="Panel/emails"]
+wait_time = 3.0
+script = ExtResource("6_uavkn")
+
 [node name="orders" type="Panel" parent="Panel"]
 layout_mode = 0
 offset_left = 64.0
@@ -274,6 +374,17 @@ offset_bottom = 40.0
 text = "General Furniture Store
 -Commercial Location"
 icon = ExtResource("5_lehrm")
+alignment = 0
+
+[node name="order6button" type="Button" parent="Panel/orders"]
+visible = false
+offset_left = 2.0
+offset_top = 13.0
+offset_right = 158.0
+offset_bottom = 40.0
+text = "Plumbing Local
+-Commercial Location"
+icon = ExtResource("8_p5deu")
 alignment = 0
 
 [node name="order5button" type="Button" parent="Panel/orders"]
@@ -642,9 +753,13 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
+[connection signal="showmail5" from="." to="Panel/emails/email5timer" method="_on_computer_showmail_5"]
 [connection signal="pressed" from="Panel/emails/email1p" to="." method="_on_email_1p_pressed"]
 [connection signal="pressed" from="Panel/emails/email2p" to="." method="_on_email_2p_pressed"]
 [connection signal="pressed" from="Panel/emails/email3p" to="." method="_on_email_3p_pressed"]
+[connection signal="pressed" from="Panel/emails/email4p" to="." method="_on_email_4p_pressed"]
+[connection signal="pressed" from="Panel/emails/email5p" to="." method="_on_email_5p_pressed"]
+[connection signal="timeout" from="Panel/emails/email5timer" to="." method="_on_email_5_timer_timeout"]
 [connection signal="pressed" from="Panel/orders/order2button" to="." method="_on_order_2_button_pressed"]
 [connection signal="pressed" from="Panel/orders/order3button" to="." method="_on_order_3_button_pressed"]
 [connection signal="pressed" from="Panel/orders/order1button" to="." method="_on_order_1_button_pressed"]

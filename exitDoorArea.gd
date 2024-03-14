@@ -1,5 +1,7 @@
 extends Area2D
 
+signal nextday
+
 var inrange = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,3 +27,8 @@ func _input(event):
 				print("day advanced")
 				global.day += 1
 				global.workdone = false
+				nextday.emit()
+
+
+func _on_computertelepathybugfix_timeout():
+	inrange = false
